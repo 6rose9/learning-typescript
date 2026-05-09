@@ -1,0 +1,61 @@
+const user = {
+    id: 123,
+    admin: false,
+    becomeAdmin: function () {
+        this.admin = true;
+    },
+};
+
+user.becomeAdmin();
+
+console.log(user);
+
+type User = {
+    id: number;
+    admin: boolean;
+}
+
+interface DB {
+    users: User[];
+    filterUsers(filter: (this: User) => boolean): User[];
+}
+
+function getDB(): DB {
+    const db: DB = {
+        users: [
+            {
+                id: 1,
+                admin: false,
+            },
+            {
+                id: 2,
+                admin: true,
+            },
+            {
+                id: 3,
+                admin: true,
+            }, {
+                id: 4,
+                admin: false,
+            }, {
+                id: 5,
+                admin: true,
+            },
+        ],
+        filterUsers(filter: (this: User) => boolean): User[] {
+            let result: User[] = [];
+            for (const user of this.users) {
+                if (filter.call(user)) {
+                    result.push(user);
+                }
+            }
+            return result;
+        }
+    }
+    return db;
+}
+
+let result = getDB().filterUsers(function () {
+    return this.admin;
+});
+console.log('result', result);
