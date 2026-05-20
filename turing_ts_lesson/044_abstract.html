@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Abstract</title>
+  </head>
+  <body>
+    <strong>Interface = “what something can do”</strong>
+    <br />
+    <strong>Abstract class = “what something is + shared base behavior”</strong>
+
+    <p>
+      Both abstract classes and interfaces are used to define contracts and
+      structure in OOP, but they solve different problems.
+    </p>
+
+    <div>
+      <h1>Interface</h1>
+      <p>An interface defines a contract.“You must implement these methods.”</p>
+      <ul>
+        <li>✅ properties</li>
+        <li>✅ methods/functions</li>
+        <li>❌ Access modifiers</li>
+        <li>❌ Method body / implementation</li>
+        <li>❌ Constructor implementation</li>
+        <li>❌ object creation</li>
+        <li>Mostly method definitions</li>
+        <li>Supports multiple interfaces</li>
+        <li>Focuses on capability/behavior</li>
+        <li>Loose coupling</li>
+        <li>A class can implement many interfaces.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>Abstract</h1>
+      <p>An abstract class is a partially completed base class.</p>
+      <ul>
+        <li>✅ abstract methods</li>
+        <li>✅ normal methods</li>
+        <li>✅ properties</li>
+        <li>✅ constructor</li>
+        <li>✅ access modifiers</li>
+        <li>✅ contain implementation</li>
+        <li>❌ instantiate directly</li>
+        <li>Supports inheritance</li>
+      </ul>
+    </div>
+
+    <h1>When to use which?</h1>
+    <div>
+      <strong>Use interface when</strong>
+      <ul>
+        <li>defining capability</li>
+        <li>unrelated classes share behavior</li>
+        <li>you only need contract</li>
+        <li>multiple inheritance is needed</li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>Use abstract class when</strong>
+      <ul>
+        <li>classes share code</li>
+        <li>you need default behavior</li>
+        <li>you want protected/private members</li>
+        <li>objects are closely related</li>
+      </ul>
+    </div>
+
+    <script src="./044_abstract.js"></script>
+  </body>
+</html>
