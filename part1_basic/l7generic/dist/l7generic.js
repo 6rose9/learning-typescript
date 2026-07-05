@@ -1,5 +1,5 @@
 "use strict";
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ regular array
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ regular array
 Object.defineProperty(exports, "__esModule", { value: true });
 let colorregarrs = ["red", "green", "blue"];
 let numregarrs = [10, 20, 30];
@@ -17,7 +17,7 @@ let numberstwo = [34, 54,];
 let numberstheree = [34, 43, [34, 45, 35]];
 let unknowntypearrs = ["hello", 2, false, "world"];
 let anytypearrs = ["hello", 2, false, "world"];
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ generic array
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ generic array
 // Array Notation => type[]
 // Generic Array Notation => Array<Type>
 let colorarrs = ["red", "green", "blue"];
@@ -25,12 +25,12 @@ let booleanarrs = [true, false, false, true];
 let mixgenarrs = [200, 300, true, 3, "orange", false, 90];
 // Error: "T" is not defined
 // let anytypegenarrs: Array<T> = ["hello",2,false, "world"];
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ nested generic array
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ nested generic array
 // nest number array
 let evengenarrs = [[30, 20, 50], [3, 35, 2,], []];
 // nest mix array
 let nestmixgenarrs = [["aung aung"], ["age", 28], ["active", true]];
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ generic function
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ generic function
 /**
  * syntax
  * function funname<T>(){}
@@ -57,27 +57,6 @@ function genfuntwo(arr) {
 // function genfunthree<string>(value: string) {
 //     console.log(value);
 // }
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ => Function with two Generic Types
-function genfunfour(val1, val2) {
-    return [val1, val2];
-}
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ => Default type for Generic Function
-function genfunfive(value) {
-    return value;
-}
-const student = {
-    name: "su su",
-    gender: "female",
-    age: 18,
-};
-/**
- * syntax
- * type ObjectType<T1,T2,T3> = {
- * key1:T1,
- * key2:T2,
- * key3:T3
- * }
- */
 // console.log(myfun(['I', 'am', 'trying', 'my', 'best!',]));
 // console.log(genfunone("All is well"));
 // console.log(genfunone(["You", "can", "do", "this"]));
@@ -88,12 +67,74 @@ const student = {
 // console.log(genfuntwo(['I', 'am', 'trying', 'my', 'best!',]));
 // console.log(genfuntwo([10, 'girls', 'and', 5, 'boys']));
 // console.log(genfuntwo([30, 50, true, 200, false]));
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Function with two Generic Types
+function genfunfour(val1, val2) {
+    return [val1, val2];
+}
 // console.log(genfunfour<string, number>("Orange", 2500));
 // console.log(genfunfour<string, boolean>("Do you love pets?", true));
 // console.log(genfunfour<string[], unknown[]>(["If", "you", "want", ",", "try", "it"], ["more", "than", 10, "times", "."]));
-// console.log(genfunfive("Hello, my love"));
-// console.log(typeof genfunfive([10, 20, 30, 40, 50])); //object
-// console.log(genfunfive<object>({ name: 'Learning JavaScript Design Patterns', price: '$44.99', 'author': 'Addy Osmani' }));
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Default type for Generic Function
+function genfunfive(value) {
+    return value;
+}
+const student = {
+    name: "su su",
+    gender: "female",
+    age: 18,
+};
+let product1 = {
+    name: "Redbull",
+    price: 2500,
+    category: "Energy Drink"
+};
+let product2 = {
+    name: "Coca Cola",
+    price: 1500,
+    category: 1
+};
+let product3 = {
+    name: "Pepsi",
+    price: "1500",
+    category: "Soft Drink"
+};
+let products = [
+    product1,
+    product2,
+    product3
+];
+console.log(products);
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Generic Set
+let myset = new Set([2, 5, 6, 3, 2, 5, 60, 30, 50, 25, 17, 20]);
+console.log(myset); // Set(10) { 2, 5, 6, 3, 60, 30, 50, 25, 17, 20 }
+console.log(myset.size); // 10
+console.log(myset.has(5)); // true
+let myGenSet = new Set(["red", "green", "blue", "red", "green"]);
+console.log(myGenSet); // Set(3) { 'red', 'green', 'blue' }
+console.log(myGenSet.size); // 3
+console.log(myGenSet.has("green")); // true
+let mixed = new Set(["red", 20, "green", true, 30, false, "blue", 20, true, 30, "red", false]);
+console.log(mixed);
+let addSet = new Set([10, 20]);
+addSet.add(30);
+addSet.add(10);
+console.log(addSet); // Set(3) { 10, 20, 30 }
+addSet.delete(20);
+console.log(addSet); // Set(2) { 10, 30 }
+addSet.clear();
+console.log(addSet); // Set(0) {}
+let colorSet = new Set(["red", "green", "blue"]);
+for (let color of colorSet) {
+    console.log(color);
+}
+let userSet = new Set([
+    { name: "Alice", age: 30, isActive: true },
+    { name: "Bob", age: 25, isActive: false }
+]);
+console.log(userSet);
+userSet.add({ name: "Charlie", age: 35, isActive: true });
+userSet.add({ name: "Alice", age: 20, isActive: true });
+console.log(userSet);
 // ---------------------------------------------------------------------------------------------------------- Notes
 // Array<string> ✅ works
 let colors = ["red", "green"];
