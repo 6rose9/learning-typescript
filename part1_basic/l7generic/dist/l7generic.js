@@ -135,6 +135,27 @@ console.log(userSet);
 userSet.add({ name: "Charlie", age: 35, isActive: true });
 userSet.add({ name: "Alice", age: 20, isActive: true });
 console.log(userSet);
+const normalUser = {
+    name: "John Doe",
+    age: 30,
+    isActive: true
+};
+const vendor = {
+    name: "Jane Smith",
+    age: 25,
+    isActive: false
+};
+let admin = "name"; // Valid assignment
+admin = "age"; // Valid assignment
+// admin = "email"; // ❌ Error: Type '"email"' is not assignable to type 'AdminUser'.
+console.log(admin); // Output: "age"
+function getshopinfo(obj, info) {
+    return obj[info];
+}
+let shopname = getshopinfo(vendor, "name"); // Type is string
+let userage = getshopinfo(normalUser, "age"); // Type is number
+console.log(shopname); // Output: "Jane Smith"
+console.log(userage); // Output: 30
 // ---------------------------------------------------------------------------------------------------------- Notes
 // Array<string> ✅ works
 let colors = ["red", "green"];

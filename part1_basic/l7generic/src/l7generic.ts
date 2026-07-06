@@ -231,6 +231,50 @@ userSet.add({ name: "Alice", age: 20, isActive: true });
 
 console.log(userSet);
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ keyof, extends
+
+type VipUser = {
+    name: string;
+    age: number;
+    email: string;
+    address: string;
+    isActive: boolean;
+}
+
+type VipClient = keyof VipUser; // Extracts keys as union type: "name" | "age" | "isActive"
+
+const normalUser = {
+    name: "John Doe",
+    age: 30,
+    isActive: true
+}
+
+type Vendor = typeof normalUser; // Extracts type of normalUser object
+
+const vendor: Vendor = {
+    name: "Jane Smith",
+    age: 25,
+    isActive: false
+}
+
+type AdminUser = keyof Vendor; // Extracts keys as union type: "name" | "age" | "isActive"
+
+let admin: AdminUser = "name"; // Valid assignment
+admin = "age"; // Valid assignment
+// admin = "email"; // ❌ Error: Type '"email"' is not assignable to type 'AdminUser'.
+
+console.log(admin); // Output: "age"
+
+function getshopinfo<T, K extends keyof T>(obj: T, info: K): T[K] {
+    return obj[info];
+}
+
+let shopname = getshopinfo(vendor, "name"); // Type is string
+let userage = getshopinfo(normalUser, "age"); // Type is number
+
+console.log(shopname); // Output: "Jane Smith"
+console.log(userage); // Output: 30
+
 // ---------------------------------------------------------------------------------------------------------- Notes
 
 // Array<string> ✅ works
