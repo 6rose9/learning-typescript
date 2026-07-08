@@ -1,0 +1,24 @@
+Type widening is when TypeScript automatically converts a specific literal into a broader type.
+
+let name = "Crystal";
+
+TypeScript widens 'Crystal' to 'string' because let variables can change
+
+---------------------------------------------------------------------------------
+
+When does widening NOT happen?
+
+When you explicitly specify the type or use const:
+
+const x = "hello";
+// type: "hello"
+
+let y: "hello" = "hello";
+// type: "hello"
+
+type Person = {
+    name: "Crystal";
+}
+// name must always be "Crystal"
+
+No widening occurs because you've explicitly told TypeScript the exact type.

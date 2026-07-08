@@ -62,3 +62,10 @@ Install TypeScript Locally
 npm init 
 
 npm install typescript --save --dev
+
+----------------------------------------------------
+tsc -init
+
+tsc -w
+
+node file.js or nodemon file.js
