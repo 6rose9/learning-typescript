@@ -77,3 +77,23 @@ const myCapital = (account) => {
 };
 console.log(myCapital(myWallet));
 console.log(myWallet.myplan?.());
+let employee = {
+    id: '0001',
+    name: 'Crystal',
+    position: 'Software Engineer',
+    skills: ['laravel', 'react', 'typescript'],
+    getskills: function () {
+        return this.skills;
+    },
+    getoffer: () => {
+        return Math.random() > 0.5;
+    }
+};
+console.log(employee.getoffer());
+const productinfo = {
+    brand: "Redbull",
+    price: 2000,
+    packing: "can",
+    stock: 100
+};
+console.log(productinfo);

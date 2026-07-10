@@ -8,6 +8,8 @@ type tax = 0.1 | 0.2 | 0.3 | 0.4 | 0.5;
 
 type transaction_type = "deposit" | "withdraw" | "transfer";
 
+// ----------------------------------- interface & extends -----------------------------------
+
 interface user extends profile {
     id: string | number | null;
     name: name;
@@ -122,3 +124,56 @@ const myCapital = (account: account) => {
 
 console.log(myCapital(myWallet));
 console.log(myWallet.myplan?.());
+
+// ----------------------------------- interface methods -----------------------------------
+
+interface Applicate{
+    id: string;
+    name: string;
+    position?: string;
+    skills: string[];
+    getskills(): string[];
+    getoffer: () => boolean;
+}
+
+let employee: Applicate = {
+    id: '0001',
+    name: 'Crystal',
+    position: 'Software Engineer',
+    skills: ['laravel', 'react', 'typescript'],
+    getskills: function () {
+        return this.skills;
+    },
+    getoffer: () => {
+        return Math.random() > 0.5;
+    }   
+}
+
+console.log(employee.getoffer());
+
+// ----------------------------------- interface arguments -----------------------------------
+
+// duplicate type is not allowed in the same scope
+
+// type calculator = (a: number, b: number) => number;
+// type calculator = (a: number, b: number) => number;
+
+interface Product{
+    brand: string;
+    price: number;
+}
+
+interface Product{
+    packing: string;
+    stock: number;
+    price: number; // can contain again but must be the same data type
+}
+
+const productinfo: Product = {
+    brand: "Redbull",
+    price: 2000,
+    packing: "can",
+    stock: 100
+}
+
+console.log(productinfo);
