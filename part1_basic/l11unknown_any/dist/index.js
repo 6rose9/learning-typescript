@@ -32,3 +32,15 @@ myvalue = {
     address: "Myanmar"
 };
 // console.log(myvalue.name); // Error: myvalue is of type unknown
+// ------------------// ------------------// ------------------// ------------------// ------------------
+// NOT RECOMMENDED
+let brand = "Redbull";
+let price = brand;
+let fee = price; // Beware: string is working in number
+console.log(fee); // Redbull
+// RECOMMENDED
+let brandname = "Sponsor";
+let ordinaryprice = brandname;
+// let sellprice: number = ordinaryprice; Error: Type 'unknown' cannot assign to number
+let sellprice = typeof ordinaryprice === 'number' ? ordinaryprice : 100;
+console.log(sellprice); // 100
