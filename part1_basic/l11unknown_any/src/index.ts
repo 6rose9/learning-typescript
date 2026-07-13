@@ -65,3 +65,19 @@ let ordinaryprice: unknown = brandname;
 let sellprice: number = typeof ordinaryprice === 'number' ? ordinaryprice : 100;
 console.log(sellprice); // 100
 
+// ------------------// ------------------// ------------------// ------------------// ------------------
+
+// unknown in union (|) and intersection (&) type
+
+let value: unknown | string = "apple"; 
+// let fruit: string = value; Error: 'unknown is not assignable to type string'
+
+let p: unknown | number = 200;
+// let q: number = p; Error
+// q: unknown = p; Error
+
+let productname: unknown & string = "Coffee"; 
+let itemname: string = productname;
+
+// let test: boolean = productname; Error
+let test: unknown = productname;
