@@ -32,7 +32,7 @@ let product3: Product = {
     // price : 8000000, Error: must be string type
 }
 
-// ----------------------------------------------------------------------
+// ---------------------------
 
 type PhoneBooks = {
     [name: string]: string
@@ -44,7 +44,7 @@ let myContacts: PhoneBooks = {
     mylove: "343536464"
 }
 
-// ----------------------------------------------------------------------
+// ----------------------------------//------------------------------------
 
 type Student = {
     [key: string]: string;
@@ -61,3 +61,58 @@ let student1: Student = {
 let student2: Student = {
     grade: "10"
 }
+
+// ---------------------------
+
+type Numbers = {
+    [key: number]: string;
+}
+
+let numbers: Numbers = {
+    1: "One",
+    '2': "Two",
+}
+
+console.log(numbers);
+
+// ----------------------------------//------------------------------------
+
+type PC = {
+    name: string;
+    price: number;
+}
+
+type MiniPC = {
+    // [k: string]: {
+    //     name: string;
+    //     price: number;
+    // }
+    [k: string]: PC
+}
+
+let officePC: MiniPC = {
+    pc1: {
+        name: "HP",
+        price: 5_000_000
+    },
+    // pc2: {
+    //     name: "HP",
+    // },
+    // note: "Test", ERROR
+    pc2: {
+        name: "DELL",
+        price: 5_000_000
+    },
+}
+
+type User = {
+    [k: string]: string | number;
+}
+
+let user: User = {
+    name: "John",
+    age: 20
+}
+
+// ----------------------------------//------------------------------------
+
