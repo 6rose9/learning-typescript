@@ -116,3 +116,27 @@ let user: User = {
 
 // ----------------------------------//------------------------------------
 
+// index access type
+
+type Phone = {
+    brandname: string;
+    price: number;
+    model: {
+        name: string;
+        serialnumber: string;
+    }
+}
+
+type Brand = Phone["brandname"]; // can't use dot (.) notation bcz it is type
+
+let apple: Brand = "Iphone 17 pro max";
+console.log(apple);
+
+type SerialNumber = Phone["model"]["serialnumber"];
+let serial: SerialNumber = "09589375938573985";
+
+type PhoneKey = "brandname" | "price" | "model";
+type PhoneType = Phone[PhoneKey];
+
+let myPhone: PhoneType = "Samsung";
+let phonePrice: PhoneType = "5000000";

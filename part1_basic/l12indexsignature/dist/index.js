@@ -47,4 +47,8 @@ let user = {
     name: "John",
     age: 20
 };
-// ----------------------------------//------------------------------------
+let apple = "Iphone 17 pro max";
+console.log(apple);
+let serial = "09589375938573985";
+let myPhone = "Samsung";
+let phonePrice = "5000000";
