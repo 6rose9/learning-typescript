@@ -68,3 +68,64 @@ var HttpCode;
     HttpCode[HttpCode["UnprocessableEntity"] = 422] = "UnprocessableEntity";
 })(HttpCode || (HttpCode = {}));
 console.log(HttpCode.OK);
+let success = HttpCode.OK;
+console.log(success);
+var MyType;
+(function (MyType) {
+    MyType[MyType["TypeOne"] = 123] = "TypeOne";
+    MyType["TypeTwo"] = "hello";
+    // TypeThree = true, 
+})(MyType || (MyType = {}));
+// ------------------------------------------- Enum Merging
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+(function (Color) {
+    // White, In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
+    Color[Color["White"] = 0] = "White";
+    Color[Color["Black"] = 1] = "Black";
+    Color[Color["Yellow"] = 2] = "Yellow";
+    // Blue, Duplicate identifier 'Blue'
+})(Color || (Color = {}));
+console.log(Color);
+// {
+//   '0': 'White',
+//   '1': 'Black',
+//   '2': 'Yellow',
+//   Red: 0,
+//   Green: 1,
+//   Blue: 2,
+//   White: 0,
+//   Black: 1,
+//   Yellow: 2
+// }
+console.log(Color.Green); // 1
+console.log(Color[1]); // Black
+console.log(Color.Blue); // 2
+console.log(Color[2]); // Yellow
+console.log(Color[10]); // undefined
+// ----------------------------------------------   With Function
+var Direction;
+(function (Direction) {
+    Direction[Direction["East"] = 0] = "East";
+    Direction[Direction["West"] = 1] = "West";
+    Direction[Direction["North"] = 2] = "North";
+    Direction[Direction["Souht"] = 3] = "Souht";
+})(Direction || (Direction = {}));
+function move(dir) {
+    console.log(`You are moving to ${Direction[dir]}`);
+}
+move(1); // You are moving to West
+move(Direction.East); // You are moving to East
+var CarEngine;
+(function (CarEngine) {
+    CarEngine[CarEngine["Stopped"] = 0] = "Stopped";
+    CarEngine[CarEngine["Started"] = 1] = "Started";
+})(CarEngine || (CarEngine = {}));
+function isRunning(state) {
+    return state === CarEngine.Started;
+}
+console.log(isRunning(1));

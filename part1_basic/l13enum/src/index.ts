@@ -55,7 +55,7 @@ console.log(Status.Pending); // 0
 // }
 
 enum Numbers {
-    num1 = 10, 
+    num1 = 10,
     num2,
     num3,
     num4,
@@ -81,8 +81,82 @@ enum HttpCode {
     OK = 200,
     BadRequest = 400,
     Unauthenticated = 401,
-    Unauthorized  = 403,
+    Unauthorized = 403,
     UnprocessableEntity = 422
 }
 
 console.log(HttpCode.OK);
+
+let success: HttpCode = HttpCode.OK;
+console.log(success);
+
+enum MyType {
+    TypeOne = 123,
+    TypeTwo = "hello",
+    // TypeThree = true, 
+}
+
+// ------------------------------------------- Enum Merging
+
+enum Color {
+    Red,
+    Green,
+    Blue,
+}
+
+enum Color {
+    // White, In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
+    White = 0,
+    Black,
+    Yellow,
+    // Blue, Duplicate identifier 'Blue'
+}
+
+console.log(Color);
+
+// {
+//   '0': 'White',
+//   '1': 'Black',
+//   '2': 'Yellow',
+//   Red: 0,
+//   Green: 1,
+//   Blue: 2,
+//   White: 0,
+//   Black: 1,
+//   Yellow: 2
+// }
+
+console.log(Color.Green); // 1
+console.log(Color[1]); // Black
+
+console.log(Color.Blue); // 2
+console.log(Color[2]); // Yellow
+
+console.log(Color[10]);  // undefined
+
+// ----------------------------------------------   With Function
+
+enum Direction {
+    East,
+    West,
+    North,
+    Souht
+}
+
+function move(dir: Direction) {
+    console.log(`You are moving to ${Direction[dir]}`);
+}
+
+move(1); // You are moving to West
+move(Direction.East); // You are moving to East
+
+enum CarEngine{
+    Stopped,
+    Started,
+}
+
+function isRunning(state: CarEngine): boolean{
+    return state === CarEngine.Started
+}
+
+console.log(isRunning(1));
