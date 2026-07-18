@@ -1,0 +1,35 @@
+// properties, 
+// methods, 
+// access modifiers, 
+// constructor, 
+// inheritance, 
+// super, 
+// static, 
+// abstract, 
+// interface, 
+// implements
+// polymorphism,
+// encapsulation,
+// getters and setters,
+
+------- this keywork ---------
+
+At top level in the browser : 'this' refers to 'window' object
+In strict mode or modules : 'this' will be undefined 
+
+
+1. If executed as an ES Module (Default for modern TypeScript)
+// top-level scope in an ES Module
+console.log(this); // undefined
+
+2. If executed as a CommonJS Module (Node.js default)
+// top-level scope in a CommonJS Module
+console.log(this); // {} (an empty object, which is exactly `module.exports`)
+
+call(), apply(), bind()
+
+-------------- scope -----------------
+
+Global scope
+Function scope (var)
+Block scope (let, const)
