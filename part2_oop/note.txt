@@ -33,3 +33,7 @@ call(), apply(), bind()
 Global scope
 Function scope (var)
 Block scope (let, const)
+
+Functions create a hard border for all variables. 
+Neither var, let, nor const can ever escape a function. 
+Calling any of them outside showBlockValue() will result in a ReferenceError.
