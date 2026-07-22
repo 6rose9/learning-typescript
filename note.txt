@@ -1,1 +1,42 @@
 https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+
+1. target = JavaScript Syntax Version
+
+target specifies how modern the JavaScript features in your output file should be.
+
+It decides how things like async/await, classes, arrow functions, or ? (optional chaining) are compiled.
+
+    If you set "target": "ES5", TypeScript converts arrow functions like () => {} into older function() {} code so legacy browsers can run it.
+
+    If you set "target": "ES2022", TypeScript leaves modern syntax untouched because modern runtimes already understand it.
+
+===============================================================================================================
+2. module = Module System Style
+
+module specifies how files share code with each other (import/export vs require/exports).
+
+    CommonJS: Outputs Node's legacy require('fs') and module.exports = ....
+
+    ES6 / ES2020 / ESNext: Outputs modern ECMAScript Module syntax (import fs from 'fs' and export default ...).
+
+================================================================================================================
+
+The default value for module depends directly on what you set your target to:
+1. If target is ES3 or ES5 (or left blank)
+
+    Default module: CommonJS
+
+    Output syntax: Uses require() and module.exports = ....
+
+2. If target is ES6 / ES2015 or higher
+
+    Default module: ES6 / ES2015 (which is ESM)
+
+    Output syntax: Uses import and export statements.
+
+================================================================================================================
+
+// This tells TypeScript to use the modern Node.js resolution algorithm 
+that replaces the deprecated node10 setup
+
+"moduleResolution": "NodeNext", 
