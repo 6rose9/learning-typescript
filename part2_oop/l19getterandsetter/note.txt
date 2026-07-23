@@ -1,0 +1,28 @@
+class Account {
+  private balance: number = 0;
+
+  // ❌ THIS CAUSES AN INFINITE LOOP / STACK OVERFLOW!
+  get balance(): number {
+    return this.balance; // The getter keeps calling itself forever!
+  }
+}
+
+
+//Modifier            Main Class          SubClass            Outside
+// public              yes                 yes                 yes
+// protected           yes                 yes                 no
+// private             yes                  no                 no
+
+// Syntax 
+
+// class ClassName {
+//     private _property: type;
+
+//     get propertyName(): type {
+//         return this._property;
+//     }
+
+//     set propertyName(value: type) {
+//         this._property = value;
+//     }
+// }

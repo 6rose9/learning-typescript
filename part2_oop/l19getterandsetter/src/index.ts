@@ -1,22 +1,3 @@
-//Modifier            Main Class          SubClass            Outside
-// public              yes                 yes                 yes
-// protected           yes                 yes                 no
-// private             yes                  no                 no
-
-// Syntax 
-
-// class ClassName {
-//     private _property: type;
-
-//     get propertyName(): type {
-//         return this._property;
-//     }
-
-//     set propertyName(value: type) {
-//         this._property = value;
-//     }
-// }
-
 class People {
     private _name: string;
 
