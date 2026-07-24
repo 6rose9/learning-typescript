@@ -1,0 +1,8 @@
+Abstract Class
+   - must start with abstract keyword
+   - can't create instance 
+
+Abstract Method
+   - a method declared in an Abstract Class
+   - no body
+   - must implement from child that inherits from it
