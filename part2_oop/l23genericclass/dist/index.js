@@ -42,4 +42,27 @@ class Student {
 let student1 = new Student("John", 23, "Yangon");
 // console.log(student1); Student { name: 'John', age: 23, address: 'Yangon' }
 let student2 = new Student("Skylar", "23 years old", "Mandalay");
-// console.log(student2); Student { name: 'Skylar', age: '23 years old', address: 'Mandalay' }
+class MyStore {
+    datas = [];
+    add(item) {
+        this.datas.push(item);
+    }
+    getitems() {
+        return this.datas;
+    }
+    getById(id) {
+        return this.datas.find(item => item.id === id);
+    }
+}
+let schoolitems = new MyStore();
+schoolitems.add({ id: '0001', name: 'book', price: 2000 });
+schoolitems.add({ id: '0002', name: 'pencil', price: 1000 });
+schoolitems.add({ id: '0003', name: 'eraser', price: 500 });
+console.log(schoolitems.getitems());
+console.log(schoolitems.getById("32"));
+let foods = new MyStore();
+foods.add({ id: 1, name: "apple" });
+foods.add({ id: 2, name: "orange" });
+foods.add({ id: 3, name: "limon" });
+console.log(foods.getitems());
+console.log(foods.getById(3));

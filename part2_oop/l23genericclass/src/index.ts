@@ -54,3 +54,37 @@ let student1 = new Student<string, number, string>("John", 23, "Yangon");
 
 let student2 = new Student<string, string, string>("Skylar", "23 years old", "Mandalay");
 // console.log(student2); Student { name: 'Skylar', age: '23 years old', address: 'Mandalay' }
+
+// ---------------------------------------------
+
+interface SetId {
+    id: number | string;
+}
+
+class MyStore<T extends SetId> {
+    private datas: T[] = [];
+    add(item: T) {
+        this.datas.push(item);
+    }
+    getitems() {
+        return this.datas;
+    }
+
+    getById(id: number | string): T | undefined {
+        return this.datas.find(item => item.id === id)
+    }
+}
+
+let schoolitems = new MyStore<{ id: string, name: string, price: number }>();
+schoolitems.add({ id: '0001', name: 'book', price: 2000 });
+schoolitems.add({ id: '0002', name: 'pencil', price: 1000 });
+schoolitems.add({ id: '0003', name: 'eraser', price: 500 });
+console.log(schoolitems.getitems());
+console.log(schoolitems.getById("32"));
+
+let foods = new MyStore<{ id: number, name: string }>();
+foods.add({ id: 1, name: "apple" });
+foods.add({ id: 2, name: "orange" });
+foods.add({ id: 3, name: "limon" });
+console.log(foods.getitems());
+console.log(foods.getById(3));
