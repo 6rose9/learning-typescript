@@ -49,3 +49,32 @@ type ty31 = [string, number] extends any[] ? true : false; // true
 // never check
 type ty32 = never extends string ? true : false; // true
 type ty33 = never extends number ? true : false; // true
+
+// Extract (Utality type)
+type MixTypes = "Hay" | ["Boy", "Girl"] | 1500 | { brand: "Redbull", price: 0 } | [10, 20, 30] | { brand: "Sponer", price: number } | "Good Bye";
+
+type Strings = Extract<MixTypes, string>; // "Hay" | "Good Bye"
+
+type ProductOne = Extract<MixTypes, { brand: "Redbull", price: 0 }>; // { brand: "Redbull", price: 0 } 
+type ProductTwo = Extract<MixTypes, { price: 0 }>; // Result: never
+type ProductThree = Extract<MixTypes, { stock: 0 }>; // Result: never
+
+type ArrayOne = Extract<MixTypes, []>; // Result: never
+type ArrayTwo = Extract<MixTypes, number[]>; // [10, 20, 30]
+type ArrayThree = Extract<MixTypes, string[]>; // ["Boy", "Girl"]
+type ArrayFour = Extract<MixTypes, [unknown, unknown]>; // ["Boy", "Girl"] ***
+type ArrayFive = Extract<MixTypes, [unknown, unknown, unknown]>; // [10, 20, 30] ***
+
+// Exclude (Utality type)
+type NotPrimitives = Exclude<MixTypes, string | number>; // ["Boy", "Girl"] | { brand: "Redbull", price: 0 } | [10, 20, 30] | { brand: "Sponer", price: number };
+type NotArrays = Exclude<MixTypes, any[]>; // "Hay" | 1500 | { brand: "Redbull", price: 0 } | { brand: "Sponer", price: number } | "Good Bye";
+
+type NotProductOne = Exclude<MixTypes, { brand: "Redbull", price: 0 }>; 
+type NotProductTwo = Exclude<MixTypes, { price: 0 }>; 
+type NotProductThree = Exclude<MixTypes, { stock: 0 }>; 
+
+type NotArrayOne = Exclude<MixTypes, []>; 
+type NotArrayTwo = Exclude<MixTypes, number[]>; 
+type NotArrayThree = Exclude<MixTypes, string[]>; 
+type NotArrayFour = Exclude<MixTypes, [unknown, unknown]>; 
+type NotArrayFive = Exclude<MixTypes, [unknown, unknown, unknown]>; 
