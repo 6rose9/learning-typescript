@@ -1,0 +1,30 @@
+1. ------------------------------------------create node project
+npm init 
+
+2. ------------------------------------------install type
+npm install typescript --save-dev
+
+tsc --init
+
+tsc -w
+
+3. ------------------------------------------folder structure
+create file > src/export.ts, src/import.ts
+
+            > index.html
+
+4. ------------------------------------------edit config typescript
+tsconfig.json
+
+5. ------------------------------------------install es-modules
+npm install esmodules-dev-server --save-dev
+
+6. ------------------------------------------edit package.json
+When set to "module", 
+the type field allows a package to specify all .js files within are ES modules.
+
+"type": "modules"
+
+scripts: {
+"serve": "node node_modules/esmodules-dev-server"
+}
