@@ -18,3 +18,19 @@ function greeting() {
 export {
     greeting,
 }
+
+// method 3 (with alias)
+
+function getuser(name: string) {
+    return name;
+}
+
+const student = {
+    name: "John",
+    age: 30,
+    address: "Yinnyein"
+}
+
+export { getuser as userinfo }
+
+export { getuser, student}

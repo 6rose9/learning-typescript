@@ -10,3 +10,13 @@ function greeting() {
     console.log(`Mingalarpar!`);
 }
 export { greeting, };
+function getuser(name) {
+    return name;
+}
+const student = {
+    name: "John",
+    age: 30,
+    address: "Yinnyein"
+};
+export { getuser as userinfo };
+export { getuser, student };
