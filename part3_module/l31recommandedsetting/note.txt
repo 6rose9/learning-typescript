@@ -1,0 +1,7 @@
+Recommand Typescript Config
+
+https://github.com/tsconfig/bases
+
+npm install --save-dev @tsconfig/recommended
+
+"extends": "@tsconfig/recommended/tsconfig.json"
