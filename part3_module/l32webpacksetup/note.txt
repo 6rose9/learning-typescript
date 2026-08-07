@@ -1,0 +1,84 @@
+Webpack + TypeScript Project Setup - Step by Step
+==================================================
+
+Step 1: Initialize npm project
+-------------------------------
+Command: npm init -y
+Result: Created package.json with default settings
+
+Step 2: Install webpack and TypeScript dependencies
+----------------------------------------------------
+Command: npm install --save-dev webpack webpack-cli typescript ts-loader webpack-dev-server html-webpack-plugin
+Result: Installed 338 packages
+
+Step 3: Create project structure
+----------------------------------
+Created directories: src/, dist/
+Created files:
+  - tsconfig.json (TypeScript config)
+  - webpack.config.ts (TypeScript format config)
+  - src/index.ts (entry point)
+  - dist/index.html (HTML template)
+
+Step 4: Add build scripts to package.json
+-------------------------------------------
+Added scripts:
+  "build": "webpack"
+  "dev": "webpack serve"
+
+Step 5: First build attempt
+-----------------------------
+Command: npm run build
+ERROR: Cannot find module 'ts-node/register'
+Cause: webpack-cli needs ts-node to load .ts config files
+
+FIX: Install ts-node
+Command: npm install --save-dev ts-node
+
+Step 6: Second build attempt
+------------------------------
+Command: npm run build
+ERROR: Cannot read properties of undefined (reading 'fileExists')
+Cause: Node v24 has compatibility issues with ts-node
+
+FIX: Convert webpack.config.ts to webpack.config.js (CommonJS format)
+- Renamed file to webpack.config.js
+- Changed import syntax to require()
+- Export changed from "export default" to "module.exports"
+- Uninstalled ts-node (no longer needed)
+
+Step 7: Third build attempt
+-----------------------------
+Command: npm run build
+ERROR: TypeError: Cannot read properties of undefined (reading 'fileExists')
+Cause: ts-loader v9 incompatible with TypeScript v7 (latest)
+
+FIX: Downgrade TypeScript to v5
+Command: npm install --save-dev typescript@5
+
+Step 8: Final build attempt
+-----------------------------
+Command: npm run build
+Result: SUCCESS - webpack compiled in 1040ms
+
+Output files:
+  - dist/bundle.js (1.45 KiB)
+  - dist/index.html (324 bytes)
+
+Final Project Structure
+========================
+l33webpackexercise/
+├── dist/
+│   ├── bundle.js
+│   └── index.html
+├── src/
+│   └── index.ts
+├── node_modules/
+├── package.json
+├── tsconfig.json
+└── webpack.config.js
+
+Commands Summary
+=================
+- npm run build  -> production build
+- npm run dev    -> dev server on port 3000 with hot reload
