@@ -1,0 +1,76 @@
+Optimizing tool selection...Checking the build setup so I can explain why ES module syntax works in this project.
+
+Read [](file:///home/zzt/Documents/learning/l7_typescript/lessons/part3_module/l33webpackexercise)
+
+Read [](file:///home/zzt/Documents/learning/l7_typescript/lessons/part3_module/l33webpackexercise/webpack.config.js)
+
+Read [](file:///home/zzt/Documents/learning/l7_typescript/lessons/part3_module/l33webpackexercise/tsconfig.json)
+
+## Why `import` works here
+
+Because your project is not running `src/index.ts` directly with Node.
+
+### What is actually happening
+
+- `package.json` has `"type": "commonjs"` → that only tells Node how to interpret `.js` files if you run them directly.
+- Your source is `.ts` and goes through `ts-loader` + `webpack`.
+- tsconfig.json uses `"module": "ES2020"`, so TypeScript treats your `import`/`export` as ES module syntax.
+- Webpack bundles the result into `public/bundle.js`, so the browser gets a working bundle.
+
+### Important distinction
+
+- `type: "commonjs"` affects Node module resolution for `.js` files.
+- It does not stop TypeScript from using `import` in `.ts` files.
+- It also does not stop webpack from bundling ES-style imports.
+
+### In short
+
+`commonjs` in `package.json` is about Node runtime behavior.
+
+But in your webpack project:
+- TypeScript compiles `.ts`
+- webpack bundles modules
+- `import { greeting } from "./components/app";` is allowed and transformed
+
+So yes, CommonJS normally uses `require`, but your build toolchain is handling `import` for you.
+
+-------------------------------------
+
+// install css loader & style loader if use external style css
+
+https://www.npmjs.com/package/css-loader
+
+npm install --save-dev css-loader
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
+
+import * as css from "file.css";
+
+---------------------------------------------
+
+https://www.npmjs.com/package/style-loader?activeTab=readme
+
+npm install --save-dev style-loader
+
+### webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
+
+import "./style.css"; at index.ts
