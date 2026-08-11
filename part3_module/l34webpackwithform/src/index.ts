@@ -35,9 +35,10 @@ const schema: ValidationSchema = {
     age: { required: false, type: 'number' }
 }
 form?.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent submit 
     const data = formData(form);
-    console.log("Form Data:", data);
+    // console.log("Form Data:", data);
 
-    validateForm(data, schema);
+    const errors = validateForm(data, schema);
+    console.log('error', errors);
 })
