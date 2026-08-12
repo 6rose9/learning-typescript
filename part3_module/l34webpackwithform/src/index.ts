@@ -32,7 +32,7 @@ const form = document.querySelector<HTMLFormElement>('form');
 const schema: ValidationSchema = {
     name: { required: true, minLength: 3, maxLength: 6 },
     email: { required: true, type: 'email' },
-    age: { required: false, type: 'number' }
+    age: { required: false, type: 'number', min: 0 }
 }
 form?.addEventListener("submit", (e) => {
     e.preventDefault(); // prevent submit 
@@ -40,5 +40,11 @@ form?.addEventListener("submit", (e) => {
     // console.log("Form Data:", data);
 
     const errors = validateForm(data, schema);
-    console.log('error', errors);
+    // console.log(Object.keys(errors)); // []
+    if (Object.keys(errors).length > 0) {
+        console.error("Validatation Error:", errors);
+    } else {
+        console.log("Success!", data);
+        form.reset();
+    }
 })

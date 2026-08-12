@@ -2,6 +2,7 @@ type ValidationRule = {
     required?: boolean,
     minLength?: number,
     maxLength?: number,
+    min?: number,
     type?: 'number' | 'email',
 }
 
@@ -26,15 +27,25 @@ export const validateForm = (data: Record<string, string>, schema: ValidationSch
             errors[field] = `${field} must be a least ${rules.minLength} characters`
         }
 
-        if (rules?.type === 'email') {
+        if (rules.type === 'email') {
             if (!value.includes('@') || !value.includes('.')) {
                 errors[field] = `${field} must be a valid email`;
             }
         }
 
-        if (rules.type === 'number' && value !== '' && isNaN(Number(value))) {
+        // Number('') -> 0
+        // Number('abc') -> NaN
+        if (rules.type === 'number' && value != '' && isNaN(Number(value))) {
             errors[field] = `${field} must be a valid number`;
         }
+
+        if (rules.min !== undefined && value !== "") {
+            const num = Number(value);
+            if (!Number.isNaN(num) && num < rules.min) {
+                errors[field] = `${field} must be at least ${rules.min}`;
+            }
+        }
+
     }
 
     return errors;
