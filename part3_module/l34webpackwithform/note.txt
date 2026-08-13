@@ -74,3 +74,10 @@ module.exports = {
 };
 
 import "./style.css"; at index.ts
+
+---------------------------------------------------------------
+
+Loop Type	    const Allowed?	   Reason
+for...in	    ✅ Yes	            Fresh binding created per key.
+for...of	    ✅ Yes	            Fresh binding created per element.
+Standard for	❌ No	            i++ attempts to reassign the same variable (TypeError).

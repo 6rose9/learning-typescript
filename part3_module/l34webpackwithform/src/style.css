@@ -24,6 +24,10 @@ form {
     /* xybsc */
 }
 
+form div {
+    margin-bottom: 24px;
+}
+
 label {
     display: block;
     font-weight: bold;
@@ -36,7 +40,6 @@ button {
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
-    margin-bottom: 24px;
 }
 
 button {
@@ -49,4 +52,9 @@ button {
 button:hover {
     background-color: antiquewhite;
     color: black;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
 }
