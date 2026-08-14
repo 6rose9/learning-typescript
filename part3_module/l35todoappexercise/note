@@ -6,4 +6,4 @@ npx tsc --init
 
 create src > index.tsc
 
-tsc -w
+npx tsc -w
