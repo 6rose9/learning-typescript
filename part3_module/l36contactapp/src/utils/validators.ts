@@ -1,7 +1,7 @@
 export const regexObj = {
-    name: /^[a-zA-Z]{3,30}$/, // only letters & spaces, 3 to 30 chars
-    email: /^[\w.]+@[a-z]\.[a-zA-Z]{2,}$/, // email pattern \w = a-zA-Z0-9_
-    phone: /^\d{10}$/ // 10 digit
+    name: /^[a-zA-Z ]{3,30}$/, // only letters & spaces, 3 to 30 chars
+    email: /^[\w.]+@[a-z]+\.[a-zA-Z]{2,}$/, // email pattern \w = a-zA-Z0-9_
+    phone: /^\d{11}$/ // 11 digit
 }
 
 // method 1
