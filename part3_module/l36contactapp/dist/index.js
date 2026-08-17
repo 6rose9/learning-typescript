@@ -11,3 +11,5 @@ const data = [
 data.forEach(user => console.log("Add a user: ", myContact.createUser(...user)));
 console.log("----------------------All Contacts----------------------");
 console.log("Users: ", myContact.getAllUsers());
+console.log("Update User: ", myContact.updateUser(3, { email: "kyawthu234@gmail.com" }));
+console.log("Delete user", myContact.deleteUser(2));

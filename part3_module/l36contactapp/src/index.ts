@@ -21,5 +21,7 @@ console.log("----------------------All Contacts----------------------");
 console.log("Users: ", myContact.getAllUsers());
 
 // => Update Contact
+console.log("Update User: ", myContact.updateUser(3, { email: "kyawthu234@gmail.com" }));
 
 // => Delete Contact
+console.log("Delete user", myContact.deleteUser(2));
