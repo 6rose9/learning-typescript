@@ -1,0 +1,49 @@
+# Node Project
+npm init
+
+# Install local typescript
+npm install typescript --save-dev
+
+# typescript config
+npx tsc --init
+
+# typescript compile
+npx tsc -w or npm run watch by adding script on package.json
+
+--------------------------------------------------------------------------------
+
+# install axiso to send HTTP requests to a web server
+npm install axios
+
+What?
+Client library for js to send http requests to a web server
+
+When?
+Building medium-to-large web applications or Node.js services that require complex API interactions.
+
+Why?
+Reduces boilerplate code and simplifies complex workflows by:
+
+- Automatic Error Handling: 
+Axios automatically rejects promises on HTTP error status codes outside the 2xx range (e.g., 401, 403, 422 ...). 
+Native fetch() resolves normally on 404/500 errors, forcing you to manually check response
+
+- Request & Response Interceptors: 
+You can intercept requests or responses globally before they are handled. 
+This makes it effortless to attach auth tokens (like JWTs) to every outgoing request or automatically refresh expired tokens.
+
+- Automatic JSON Transformation: 
+Axios automatically serializes outgoing request bodies to JSON and parses incoming JSON responses into JavaScript objects (response.data). 
+With fetch(), you must explicitly call JSON.stringify() on requests and await response.json() on responses.
+
+- Built-in Timeout Configuration: 
+You can set a request timeout option (e.g., timeout: 5000) out of the box. 
+With fetch(), setting a timeout requires creating and wiring up an AbortController manually.
+
+- Progress Tracking: 
+Axios provides built-in onUploadProgress and onDownloadProgress callbacks, 
+which are useful for displaying progress bars during file uploads
+
+- Unified API (Node.js & Browser): 
+Axios works identically on both the client side (using XMLHttpRequest) and the server side (using Node's native HTTP module), 
+providing a consistent interface across your entire stack.

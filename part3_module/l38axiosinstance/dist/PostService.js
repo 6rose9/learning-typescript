@@ -16,23 +16,26 @@ exports.PostService = void 0;
 const axios_1 = __importDefault(require("axios"));
 class PostService {
     constructor() {
-        this.baseUrl = "https://jsonplaceholder.typicode.com/posts";
+        this.api = axios_1.default.create({
+            baseURL: "https://jsonplaceholder.typicode.com/",
+            timeout: 5000
+        });
     }
     getPosts() {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.get(this.baseUrl);
+            const response = yield this.api.get(`posts`);
             return response.data;
         });
     }
     getPostById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.get(`${this.baseUrl}/${id}`);
+            const response = yield this.api.get(`posts/${id}`);
             return response.data;
         });
     }
     createPost(newPost) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.post(this.baseUrl, newPost);
+            const response = yield this.api.post(`posts/`, newPost);
             return response.data;
         });
     }
