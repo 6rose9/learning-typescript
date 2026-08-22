@@ -19,6 +19,17 @@ async function main() {
             body: "Good Moring, Crystal"
         });
         console.log("New Post:", newpost);
+
+        console.log("\n----------------------------------------- Update post \n")
+        const updatedPost = await postService.updatePost(1, {
+            title: "Updated Post"
+        });
+        console.log(updatedPost);
+
+        console.log("\n----------------------------------------- Delete post \n")
+        const deletePost = await postService.deletePost(1);
+        console.log(deletePost);
+
     } catch (err: any) {
         console.log(err.message);
     }

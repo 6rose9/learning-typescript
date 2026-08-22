@@ -39,5 +39,17 @@ class PostService {
             return response.data;
         });
     }
+    updatePost(id, updateData) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this.api.put(`posts/${id}`, updateData);
+            return response.data;
+        });
+    }
+    deletePost(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.api.delete(`posts/${id}`);
+            return `Post with ID ${id} deleted successfully`;
+        });
+    }
 }
 exports.PostService = PostService;

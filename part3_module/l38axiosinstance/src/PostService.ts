@@ -38,4 +38,16 @@ export class PostService {
         const response = await this.api.post<Post>(`posts/`, newPost);
         return response.data;
     }
+
+    // update post
+    async updatePost(id: number, updateData: Partial<Omit<Post, "id">>): Promise<Post> {
+        const response = await this.api.put<Post>(`posts/${id}`, updateData);
+        return response.data;
+    }
+
+    // delete post
+    async deletePost(id: number): Promise<string> {
+        await this.api.delete(`posts/${id}`);
+        return `Post with ID ${id} deleted successfully`;
+    }
 }

@@ -27,6 +27,14 @@ function main() {
                 body: "Good Moring, Crystal"
             });
             console.log("New Post:", newpost);
+            console.log("\n----------------------------------------- Update post \n");
+            const updatedPost = yield postService.updatePost(1, {
+                title: "Updated Post"
+            });
+            console.log(updatedPost);
+            console.log("\n----------------------------------------- Delete post \n");
+            const deletePost = yield postService.deletePost(1);
+            console.log(deletePost);
         }
         catch (err) {
             console.log(err.message);
