@@ -1,5 +1,5 @@
 import { db } from "./firebaseConfig";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, query, Timestamp, Unsubscribe, where } from "firebase/firestore";
 
 interface ChatMessage {
     message: string;
@@ -11,7 +11,8 @@ interface ChatMessage {
 export class Chatroom {
 
     private chats = collection(db, "chats");
-    // private unsubscribe = null;
+    // private unsubscribe: null | (() => void) = null;
+    private unsubscribe: null | Unsubscribe = null;
 
     constructor(private room: string, private username: string) { }
 
@@ -34,8 +35,15 @@ export class Chatroom {
     }
 
     // get chat messages
-    getChats() {
-
+    getChats(callback: (data: ChatMessage) => void) {
+        const qry = query(this.chats, where('room', '==', this.room));
+        this.unsubscribe = onSnapshot(qry, (docSnap: any) => {
+            docSnap.docChanges().forEach((item: any) => {
+                if (item.type === "added") {
+                    callback(item.doc.data);
+                }
+            });
+        });
     }
 
     // change chat room
