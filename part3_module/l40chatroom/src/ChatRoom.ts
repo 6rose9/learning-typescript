@@ -1,14 +1,14 @@
 import { db } from "./firebaseConfig";
 import { addDoc, collection, onSnapshot, query, Timestamp, Unsubscribe, where } from "firebase/firestore";
 
-interface ChatMessage {
+export interface ChatMessage {
     message: string;
     username: string;
     room: string;
     createAt: Timestamp
 }
 
-export class Chatroom {
+export class ChatRoom {
 
     private chats = collection(db, "chats");
     // private unsubscribe: null | (() => void) = null;
@@ -47,8 +47,24 @@ export class Chatroom {
     }
 
     // change chat room
-    updateRoom() { }
+    updateRoom(room: string) {
+        this.room = room;
+        if (this.unsubscribe) {
+            this.unsubscribe();
+        }
+    }
 
     // update username
-    updateName() { }
+    updateName(username: string) {
+        // method 1 
+        this.username = username;
+        localStorage.setItem("username", username);
+
+        // method 2
+        // return new Promise(resolve => {
+        //     this.username = username;
+        //     localStorage.setItem("username", username);
+        //     resolve();
+        // });
+    }
 }
