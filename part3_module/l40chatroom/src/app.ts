@@ -1,5 +1,6 @@
 import { ChatRoom } from "./ChatRoom";
 import {MessageUI} from "./MessageUI";
+import "../css/style.css";
 
 // get UI
 const chatsidebar = document.querySelector(".chat-sidebars") as HTMLElement;

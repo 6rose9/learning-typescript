@@ -7,10 +7,18 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "build": "webpack",
+    "dev": "webpack serve"
   },
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "ts-loader": "^9.6.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.110.3",
+    "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "firebase": "^12.18.0"

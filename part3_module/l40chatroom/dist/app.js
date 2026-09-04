@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ChatRoom_1 = require("./ChatRoom");
 const MessageUI_1 = require("./MessageUI");
+require("../css/style.css");
 const chatsidebar = document.querySelector(".chat-sidebars");
 const newnameform = document.querySelector(".new-nameform");
 const chatlistgroup = document.querySelector(".chat-lists");
