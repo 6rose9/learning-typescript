@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "public", "dist"),
-    publicPath: "auto",
+    publicPath: "/dist/", // Explicitly tell dev-server to serve from /dist/
     clean: true,
   },
   resolve: {
@@ -34,8 +34,12 @@ module.exports = {
     ],
   },
   devServer: {
-    static: path.resolve(__dirname,"public"), // multi pages application, we need to set the static folder to public
-    hot: true, // Enables live reload/HMR
+    static: {
+      directory: path.resolve(__dirname, "public"), // Serve multiple static files from public/
+      watch: true, // Watches changes in public/ static files
+    },
+    hot: true, // live reload/HMR
+    // liveReload: true, // Force full browser reload on save
     open: true, // Opens the browser after server had been started
     port: 3000,
   },

@@ -9,8 +9,9 @@ const newchatform = document.querySelector<HTMLFormElement>(".new-chatform");
 const chatlistgroup = document.querySelector<HTMLElement>(".chat-lists");
 const updatemsg = document.querySelector<HTMLElement>(".update-msg");
 const profilename = document.querySelector<HTMLElement>("#profilename");
+const roomtitle = document.querySelector<HTMLElement>("#roomtitle");
 
-if(!chatsidebar || !newnameform || !newchatform || !chatlistgroup || !updatemsg || !profilename) {
+if (!chatsidebar || !newnameform || !newchatform || !chatlistgroup || !updatemsg || !profilename || !roomtitle) {
     throw new Error("One or more required elements are missing from the DOM.");
 }
 
@@ -47,14 +48,29 @@ newchatform.addEventListener('submit', e => {
 // change chat room
 chatsidebar.addEventListener('click', e => {
 
-    if (e.target instanceof HTMLButtonElement) {
-        // console.log("i am btn");
-        // console.log(e.target.getAttribute('id'));
+    // Method 1
+    // if (e.target instanceof HTMLButtonElement) {
+    //     // console.log("i am btn");
+    //     // console.log(e.target.getAttribute('id'));
 
-        messageuiObj.clearli();
-        chatroomObj.updateRoom(e.target.getAttribute('id'));
-        chatroomObj.getChats(data => messageuiObj.renderli(data));
-    }
+    //     messageuiObj.clearli();
+    //     chatroomObj.updateRoom(e.target.getAttribute('id'));
+    //     chatroomObj.getChats(data => messageuiObj.renderli(data));
+    // }
+
+    // Method 2
+    const target = e.target as HTMLElement;
+    const getbutton = target.closest("button");
+    if (!getbutton) return;
+
+    messageuiObj.clearli();
+    const roomid = getbutton.getAttribute('id');
+    if (!roomid) return;
+
+    roomtitle.innerText = roomid;
+
+    chatroomObj.updateRoom(roomid);
+    chatroomObj.getChats((data) => messageuiObj.renderli(data));
 
 });
 
@@ -68,10 +84,14 @@ chatsidebar.addEventListener('click', e => {
 newnameform.addEventListener('submit', e => {
     e.preventDefault();
 
-    console.log(e);
+    const nameInput = newnameform.querySelector<HTMLInputElement>('#name');
 
-    const newname= document.querySelector<HTMLInputElement>('#name').value.trim();
-    // console.log(newname);
+    if (!nameInput) {
+        throw new Error("Name input element is missing from the form.");
+    }
+
+    const newname = nameInput.value.trim();
+    console.log(newname);
 
     // method 1
     chatroomObj.updateName(newname);
@@ -82,9 +102,14 @@ newnameform.addEventListener('submit', e => {
     //     .then(()=>newnameform.reset())
     //     .catch(err=>console.log(err));
 
-    // updatemsg.innerText = `Your name was update to ${newname}`;
-    // setTimeout(()=>updatemsg.innerText='',3000);
+    updatemsg.innerText = `Your name was update to ${newname}`;
+    setTimeout(() => updatemsg.innerText = '', 3000);
 
-    // newnameform.name.placeholder = `username is ${newname}`;
-    // profilename.textContent = newname;
+    nameInput.placeholder = `username is ${newname}`;
+    profilename.textContent = newname;
+
+    // switch to #general room 
+    messageuiObj.clearli();
+    chatroomObj.updateRoom("general");
+    chatroomObj.getChats(data => messageuiObj.renderli(data));
 });
